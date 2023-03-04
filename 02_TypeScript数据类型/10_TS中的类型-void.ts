@@ -3,7 +3,7 @@
 function sum(num1: number, num2: number): void {
   //   return num1 + num2;
   console.log(num1 + num2);
-  // return 123; 错误
+  // return 123;  错误
 }
 
 // 应用场景：用来指定函数类型的返回值是void
