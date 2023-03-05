@@ -1,4 +1,4 @@
-// TypeScript对于传入的函数类型的参数个数不进行检测(校验)
+// TypeScript对于传入的函数类型的多余的参数会被忽略掉(校验)
 type CalcType = (num1: number, num2: number) => number;
 function calc(calcFn: CalcType) {
   calcFn(10, 20);
