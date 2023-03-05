@@ -15,12 +15,12 @@ function add(num1: number, num2: number) {
   return num1 + num2;
 }
 
-function foo(num1: string) {
+function foo(num1: number) {
   return num1;
 }
 
 calc(add);
-// calc(foo);
+calc(foo);
 
 function mul(num1: number, num2: number) {
   return num1 * num2;
