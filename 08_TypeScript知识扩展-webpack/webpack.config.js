@@ -1,7 +1,10 @@
+// webpack基本配置
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
+  // 环境模式
   mode: 'development',
+  // 入口文件
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -10,7 +13,10 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js', '.cjs', '.json'],
   },
-  devServer: {},
+  devServer: {
+    // host:'',
+    // port:''
+  },
   module: {
     rules: [
       {
