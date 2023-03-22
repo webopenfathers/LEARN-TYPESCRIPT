@@ -20,4 +20,19 @@ declare class Person {
 // 作为第三方库为其他开发者提供类型声明文件 .d.ts => axios.d.ts
 
 
+// 声明文件模块
+declare module "*.jpg"
+declare module "*.png"
+declare module "*.jpeg"
+declare module "*.svg"
+
+declare module '*.vue'
+
+
+// cdn如何声明
+// 声明成命名空间
+declare namespace $ {
+  export function ajax(settings: any): any
+}
+
 

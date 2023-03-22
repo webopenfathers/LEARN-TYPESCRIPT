@@ -3,6 +3,8 @@ import axios from 'axios';
 import type { AxiosRequestConfig, AxiosInstance } from 'axios'
 import React from 'react'
 import _ from 'loadsh'
+import KobeImage from './img/css.jpg'
+import App from './vue/App.vue'
 
 
 const message: string = 'Hello Word';
@@ -46,6 +48,19 @@ console.log(foo('zbw'));
 const p = new Person('zbw', 14)
 console.log(p.age, p.name);
 
+// 图片文件的使用
+const imgEl = document.createElement('img')
+imgEl.src = KobeImage
+document.body.append(imgEl)
+
+
+// jquery
+$.ajax({
+  url: 'http://codercba.com:8000/home/multidata',
+  success: function (res: any) {
+    console.log(res);
+  }
+})
 
 
 

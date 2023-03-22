@@ -22,7 +22,10 @@ module.exports = {
       {
         test: /\.ts$/,
         loader: 'ts-loader',
-      },
+      },{
+        test:/\.(png|jpg?g|svg|gif)$/,
+        type:'asset/resource'
+      }
     ],
   },
   plugins: [
