@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios, { AxiosResponse } from "axios"
 import type { AxiosInstance, AxiosRequestConfig } from 'axios'
 import type { BWRequestConfig } from './type'
 
@@ -28,7 +28,7 @@ class BWRequest {
     // 每个instance实例都添加响应拦截器
     this.instance.interceptors.response.use(res => {
       console.log('全局响应成功的拦截');
-      return res
+      return res.data
     }, err => {
       console.log('全局响应失败的拦截');
       return err
@@ -49,16 +49,17 @@ class BWRequest {
 
 
   // 封装网络请求的方法
-  request(config: BWRequestConfig) {
+  request<T = any>(config: BWRequestConfig) {
     // 单次请求的成功拦截处理
     if (config.interceptors?.requestSuccessFn) {
       config = config.interceptors?.requestSuccessFn(config)
     }
-    return new Promise((resolve, reject) => {
-      this.instance.request(config).then(res => {
+
+    return new Promise<T>((resolve, reject) => {
+      this.instance.request<any, T>(config).then(res => {
         // 单词次响应的拦截器
         if (config.interceptors?.responseSuccessFn) {
-          res = config.interceptors.responseSuccessFn(res)
+          // res = config.interceptors.responseSuccessFn(res)
         }
         resolve(res)
       }).catch(err => {
