@@ -49,7 +49,7 @@ class BWRequest {
 
 
   // 封装网络请求的方法
-  request<T = any>(config: BWRequestConfig) {
+  request<T = any>(config: BWRequestConfig<T>) {
     // 单次请求的成功拦截处理
     if (config.interceptors?.requestSuccessFn) {
       config = config.interceptors?.requestSuccessFn(config)
@@ -59,7 +59,7 @@ class BWRequest {
       this.instance.request<any, T>(config).then(res => {
         // 单词次响应的拦截器
         if (config.interceptors?.responseSuccessFn) {
-          // res = config.interceptors.responseSuccessFn(res)
+          res = config.interceptors.responseSuccessFn(res)
         }
         resolve(res)
       }).catch(err => {
