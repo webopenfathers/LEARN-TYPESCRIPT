@@ -5,7 +5,15 @@ import type { BWRequestConfig } from './type'
 
 // 拦截器：蒙版Loading/token/修改配置
 
-
+/**
+ * 两个难点：
+ * 1.拦截器进行精细控制
+ * >全局拦截器
+ * >实例拦截器
+ * >单词请求拦截器
+ *
+ * 2.响应结果的类型处理(泛型)
+ */
 
 
 class BWRequest {
@@ -67,8 +75,22 @@ class BWRequest {
       })
     })
   }
-  // post() { }
-  // get() { }
+
+  get<T = any>(config: BWRequestConfig<T>) {
+    return this.request<T>({ ...config, method: 'GET' })
+  }
+
+  post<T = any>(config: BWRequestConfig<T>) {
+    return this.request<T>({ ...config, method: 'POST' })
+  }
+
+  delete<T = any>(config: BWRequestConfig<T>) {
+    return this.request<T>({ ...config, method: 'DELETE' })
+  }
+
+  put<T = any>(config: BWRequestConfig<T>) {
+    return this.request<T>({ ...config, method: 'PUT' })
+  }
 }
 
 export default BWRequest

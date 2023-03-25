@@ -13,3 +13,9 @@ bwRequest.request<IHomeData>({
 }).then((res) => {
   console.log(res.data, res.returnCode, res.success);
 })
+
+bwRequest.get<IHomeData>({
+  url: '/home/multidata'
+}).then(res => {
+  console.log(res, '999');
+})
